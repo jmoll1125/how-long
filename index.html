@@ -4,6 +4,7 @@
 <head>
 <title>How long does it take?</title>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style type="text/css">
 p, a, em, b, u, td, ol, li, pre, label, input {font-family: Georgia, Verdana, sans-serif; font-size: 18px;}
 h1, h2, h3 {font-family: Verdana, sans-serif;}
@@ -13,7 +14,7 @@ input {width: 60px; }
 </head>
 <body>
 <h1>How long does it take?</h1>
-<p>It takes <span id="res"></span> to go <input type="number" id="dist" value="60" onchange="calc()"></input> miles at <input type="number" id="mph" value="60" onchange="calc()"></input> mph</p>
+<p>It takes <span id="res"></span> to go <input type="number" inputmode="decimal" id="dist" value="60" onchange="calc()"></input> miles at <input type="number" inputmode="decimal" id="mph" value="60" onchange="calc()"></input> mph</p>
 <p id="results"></p>
 <script>
 function calc() {
@@ -36,7 +37,7 @@ function calc() {
 		output+= secs+"s "
 	};
 	//output = "It takes "+output+"to go one mile at "+document.getElementById("mph").value+ " mph.";
-	if (speed <= 0 || distance <= 0) {
+	if (speed <= 0 || distance <= 0 || Number.isNaN(speed*distance) ) {
 		output = "Error!";
 		document.getElementById("res").classList.add("error");
 		} else {
